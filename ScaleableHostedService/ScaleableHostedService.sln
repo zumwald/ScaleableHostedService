@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaleableHostedService", "ScaleableHostedService\ScaleableHostedService.csproj", "{CAE2748D-D270-4499-8DC2-5539192F75DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaleableHostedService.Tests", "ScaleableHostedService.Tests\ScaleableHostedService.Tests.csproj", "{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAE2748D-D270-4499-8DC2-5539192F75DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAE2748D-D270-4499-8DC2-5539192F75DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAE2748D-D270-4499-8DC2-5539192F75DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAE2748D-D270-4499-8DC2-5539192F75DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {864F8191-D66B-4308-9D0D-FC3CB53BC157}
+	EndGlobalSection
+EndGlobal
