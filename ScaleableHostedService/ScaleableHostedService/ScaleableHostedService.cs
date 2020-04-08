@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
 namespace ScaleableHostedService
 {
@@ -19,6 +20,7 @@ namespace ScaleableHostedService
         private SemaphoreSlim servicesSemaphore = new SemaphoreSlim(1, 1);
         private bool hasStarted = false;
         private bool isStopping = false;
+        private IOptionsMonitor<ScaleableHostedServiceOptions<T>> optionsMonitor;
 
         /// <summary>
         /// The number of instances to manage. May be modified by calling <see cref="ScaleUp(uint)"/> or <see cref="ScaleDown(uint)"/>.
@@ -29,9 +31,10 @@ namespace ScaleableHostedService
         /// Constructor for <see cref="ScaleableHostedService{T}"/>.
         /// </summary>
         /// <param name="serviceProvider">This <see cref="IServiceProvider"/>.</param>
-        public ScaleableHostedService(IServiceProvider serviceProvider)
+        public ScaleableHostedService(IServiceProvider serviceProvider, IOptionsMonitor<ScaleableHostedServiceOptions<T>> optionsMonitor)
         {
             this.serviceProvider = serviceProvider;
+            this.optionsMonitor = optionsMonitor;
         }
 
         /// <summary>
@@ -42,7 +45,17 @@ namespace ScaleableHostedService
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             hasStarted = true;
+
+            this.InstanceCount = this.optionsMonitor.CurrentValue?.InstanceCount ?? this.InstanceCount;
             await this.SynchronizeManagedServices(cancellationToken);
+
+            this.optionsMonitor.OnChange(o =>
+            {
+                if (o?.AutomaticallyScaleInstances ?? false)
+                {
+                    Task.Run(() => this.ScaleToAsync(o.InstanceCount));
+                }
+            });
         }
 
         /// <summary>
@@ -62,14 +75,21 @@ namespace ScaleableHostedService
         /// </summary>
         /// <param name="count">The amount of instances to add.</param>
         /// <returns>The task to await.</returns>
-        public async Task ScaleUpAsync(uint count) => await ScaleAsync(Convert.ToInt32(count));
+        public Task ScaleUpAsync(uint count) => ScaleAsync(Convert.ToInt32(count));
 
         /// <summary>
         /// Decreases the number of managed service instances by the specified value.
         /// </summary>
         /// <param name="count">The amount of instances to remove.</param>
         /// <returns>The task to await.</returns>
-        public async Task ScaleDownAsync(uint count) => await ScaleAsync(0 - Convert.ToInt32(count));
+        public Task ScaleDownAsync(uint count) => ScaleAsync(0 - Convert.ToInt32(count));
+
+        /// <summary>
+        /// Sets the managed service instances to the specified value.
+        /// </summary>
+        /// <param name="count">The number of instances.</param>
+        /// <returns>The task to await.</returns>
+        public Task ScaleToAsync(uint count) => ScaleAsync(Convert.ToInt32(count) - Convert.ToInt32(InstanceCount));
 
         private async Task ScaleAsync(int count)
         {
