@@ -13,7 +13,7 @@ namespace ScaleableHostedService
     /// </summary>
     /// <typeparam name="T">The implementation for the <see cref="IHostedService"/>.</typeparam>
     public class ScaleableHostedService<T> : IHostedService
-        where T : IHostedService
+        where T : ScaleableBackgroundService
     {
         private IServiceProvider serviceProvider;
         private List<T> managedServices = new List<T>();
@@ -164,7 +164,7 @@ namespace ScaleableHostedService
             }
         }
 
-        private async Task ExecuteAsync(IEnumerable<T> services, Func<IHostedService, Task> callback, bool throwOnFirstFailure = true)
+        private async Task ExecuteAsync(IEnumerable<T> services, Func<ScaleableBackgroundService, Task> callback, bool throwOnFirstFailure = true)
         {
             List<Exception> exceptions = null;
 
