@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaleableHostedService", "ScaleableHostedService\ScaleableHostedService.csproj", "{CAE2748D-D270-4499-8DC2-5539192F75DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScaleableHostedService", "ScaleableHostedService\ScaleableHostedService.csproj", "{CAE2748D-D270-4499-8DC2-5539192F75DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaleableHostedService.Tests", "ScaleableHostedService.Tests\ScaleableHostedService.Tests.csproj", "{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScaleableHostedService.Tests", "ScaleableHostedService.Tests\ScaleableHostedService.Tests.csproj", "{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{369D8E80-008B-4DBC-B41A-7E02803E65DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWithAutoscale", "Samples\SampleWithAutoscale\SampleWithAutoscale.csproj", "{AE5C78EA-50BC-4D5E-99A4-156704EF94AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73AC3690-3D01-4DF5-A5F2-99B84CDE3DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5C78EA-50BC-4D5E-99A4-156704EF94AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5C78EA-50BC-4D5E-99A4-156704EF94AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5C78EA-50BC-4D5E-99A4-156704EF94AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5C78EA-50BC-4D5E-99A4-156704EF94AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE5C78EA-50BC-4D5E-99A4-156704EF94AA} = {369D8E80-008B-4DBC-B41A-7E02803E65DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864F8191-D66B-4308-9D0D-FC3CB53BC157}
