@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 
-    <Version>0.9.1</Version>
+    <Version>0.9.2</Version>
     <Description>An IHostedService abstraction which manages a dynamically scaleable pool of IHostedService instances.</Description>
     <Authors>Dan Zumwalt</Authors>
     <PackageProjectUrl>https://github.com/zumwald/ScaleableHostedService</PackageProjectUrl>
